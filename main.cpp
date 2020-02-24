@@ -12,10 +12,11 @@ int main(void)
     std::cin >> inputString;
     while(inputString != "0")
     {
-        const float number { std::stof(inputString) };
-        if(number < upperBound)
+        const float number{std::stof(inputString)};
+        if (number < upperBound)
             randomNum.push_back(number);
         std::cin >> inputString;
+    }
 	
 	bucketSortResult sortingResult{ bucketSort(randomNum, upperBound) };
     std::cout << "Sorted numbers by bucket sort: " << std::endl;
@@ -25,10 +26,9 @@ int main(void)
 		{
 			std::cout << element << ' ';
 		}
-		std::cout << std::endl;
 	}
 
-	std::cout << "Maximum number of collisions - " << maxCollision(sortingResult) << std::endl;
+	std::cout << "\n Maximum number of collisions - " << maxCollision(sortingResult) << std::endl;
 
 	return 0;
 }
