@@ -1,30 +1,18 @@
-#include <iostream>
-#include <vector>
-#include <random>
+#include "bucketsort.h"
 
-int main(void)
+#include <cmath>
+
+bucketSortResult bucketSort(const std::vector<float> & numbers, const float upperBound)
 {
-	constexpr size_t count{ 1000u }, max{ 10u };
-	
-	std::vector<int> randomNum;
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<> distribution(0, max);
-	for (size_t i = 0; i < count; ++i)
-	{
-		const int randomNumber = distribution(gen);
-		randomNum.push_back(randomNumber);
-	}
-	
-	std::vector<int> countNum(max, 0);
-	for (size_t i = 0; i < count; ++i)
-		++countNum[randomNum[i]];
+    bucketSortResult sortedArray(upperBound, std::list<float>());
+    const size_t numbersCount{ numbers.size() };
 
-	for (size_t i = 0; i < max; ++i)
-		for (size_t j = 0; j < countNum[i]; ++j)
-		{
-			std::cout << i << ' ';
-		}
+    for (size_t i = 0; i < numbersCount; ++i)
+    {
+        const float number { numbers[i] };
+        const size_t index = std::floor(number);
+        sortedArray[index].push_back(number);
+    }
 
-	return 0;
+    return sortedArray;
 }

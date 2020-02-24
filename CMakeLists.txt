@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.15)
 project(BucketSort)
 
 set(CMAKE_CXX_STANDARD 14)
-set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
 
-add_executable(BucketSort bucketsort.cpp)
+add_executable(BucketSort main.cpp bucketsort.cpp bucketsort.h)
+
+add_subdirectory(googletest)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+add_executable(BucketSort_utests unit_tests.cpp bucketsort.cpp bucketsort.h)
+target_link_libraries(BucketSort_utests gtest gtest_main)
