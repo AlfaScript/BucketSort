@@ -16,3 +16,17 @@ bucketSortResult bucketSort(const std::vector<float> & numbers, const float uppe
 
     return sortedArray;
 }
+
+size_t maxCollision(const bucketSortResult & sortedNumbers)
+{
+    size_t maxCollision { 0u };
+
+    for(const auto & list : sortedNumbers)
+    {
+        const size_t listSize { list.size() };
+        if(listSize > maxCollision)
+            maxCollision = listSize;
+    }
+
+    return maxCollision;
+}

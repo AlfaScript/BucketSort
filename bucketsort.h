@@ -11,5 +11,6 @@
 using bucketSortResult = std::vector<std::list<float>>;
 
 bucketSortResult bucketSort(const std::vector<float> &, const float);
+size_t maxCollision(const bucketSortResult &);
 
 #endif //BUCKETSORT_BUCKETSORT_H

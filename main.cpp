@@ -16,9 +16,9 @@ int main(void)
         if(number < upperBound)
             randomNum.push_back(number);
         std::cin >> inputString;
-    }
 	
 	bucketSortResult sortingResult{ bucketSort(randomNum, upperBound) };
+    std::cout << "Sorted numbers by bucket sort: " << std::endl;
 	for (const auto & list : sortingResult)
 	{
 		for (const auto & element : list)
@@ -27,6 +27,8 @@ int main(void)
 		}
 		std::cout << std::endl;
 	}
+
+	std::cout << "Maximum number of collisions - " << maxCollision(sortingResult) << std::endl;
 
 	return 0;
 }
