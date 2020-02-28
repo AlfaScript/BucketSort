@@ -7,18 +7,18 @@ int main(void)
     std::cout << "Enter upper bound: ";
     std::cin >> upperBound;
     
-	std::vector<float> randomNum;
+	std::vector<float> inputNumbers;
     std::string inputString;
     std::cin >> inputString;
     while(inputString != "0")
     {
         const float number{std::stof(inputString)};
         if (number < upperBound)
-            randomNum.push_back(number);
+            inputNumbers.emplace_back(number);
         std::cin >> inputString;
     }
 	
-	bucketSortResult sortingResult{ bucketSort(randomNum, upperBound) };
+	bucketSortResult sortingResult{ bucketSort(inputNumbers, upperBound) };
     std::cout << "Sorted numbers by bucket sort: " << std::endl;
 	for (const auto & list : sortingResult)
 	{

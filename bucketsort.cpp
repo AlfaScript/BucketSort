@@ -11,7 +11,7 @@ bucketSortResult bucketSort(const std::vector<float> & numbers, const float uppe
     {
         const float number { numbers[i] };
         const size_t index = std::floor(number);
-        sortedArray[index].push_back(number);
+        sortedArray[index].emplace_back(number);
     }
 
     return sortedArray;
