@@ -1,28 +1,28 @@
 #include "bucketsort.h"
 
 #include <cmath>
+#include <algorithm>
 
-bucketSortResult bucketSort(const std::vector<float> & numbers, const float upperBound)
+std::vector<std::list<float>> bucketSort(const std::vector<float> & numbers)
 {
-    bucketSortResult sortedArray(upperBound, std::list<float>());
-    const size_t numbersCount{ numbers.size() };
+    const float upperBound { std::ceil(*std::max_element(numbers.cbegin(), numbers.cend())) + 1 } ;
+    std::vector<std::list<float>> sortedArray(upperBound, std::list<float>());
 
-    for (size_t i = 0; i < numbersCount; ++i)
+    for(const auto & number : numbers)
     {
-        const float number { numbers[i] };
         const size_t index = std::floor(number);
         sortedArray[index].emplace_back(number);
     }
 
-    for(size_t i = 0; i < numbersCount; ++i)
+    for(auto & list : sortedArray)
     {
-        sortedArray[i].sort();
+        list.sort();
     }
 
     return sortedArray;
 }
 
-size_t maxCollision(const bucketSortResult & sortedNumbers)
+size_t maxCollision(const std::vector<std::list<float>> & sortedNumbers)
 {
     size_t maxCollision { 0u };
 

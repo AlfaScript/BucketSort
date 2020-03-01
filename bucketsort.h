@@ -8,9 +8,7 @@
 #include <vector>
 #include <list>
 
-using bucketSortResult = std::vector<std::list<float>>;
-
-bucketSortResult bucketSort(const std::vector<float> &, const float);
-size_t maxCollision(const bucketSortResult &);
+std::vector<std::list<float>> bucketSort(const std::vector<float> &);
+size_t maxCollision(const std::vector<std::list<float>> &);
 
 #endif //BUCKETSORT_BUCKETSORT_H
