@@ -1,16 +1,17 @@
 #include <iostream>
+#include <limits>
 #include "bucketsort.h"
 
 int main(void)
 {
 	std::vector<float> inputNumbers;
-    std::string inputString;
-    std::cin >> inputString;
-    while(inputString != "0")
+	constexpr float epsilon { std::numeric_limits<float>::epsilon() };
+	float value;
+    std::cin >> value;
+    while(value > epsilon)
     {
-        const float number{std::stof(inputString)};
-        inputNumbers.emplace_back(number);
-        std::cin >> inputString;
+        inputNumbers.emplace_back(value);
+        std::cin >> value;
     }
 
     std::vector<std::list<float>> sortingResult{ bucketSort(inputNumbers) };
